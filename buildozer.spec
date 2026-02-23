@@ -110,7 +110,7 @@ android.minapi = 21
 #android.sdk = 21
 
 # (str) Android NDK version to use
-#android.ndk = 23b
+android.ndk = 25b
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 android.ndk_api = 21
@@ -137,7 +137,7 @@ android.ndk_api = 21
 # the default, you will be shown the license when first running
 # buildozer.
 # android.accept_sdk_license = False
-
+android.accept_sdk_license = True
 # (str) Android entry point, default is ok for Kivy-based app
 #android.entrypoint = org.kivy.android.PythonActivity
 
@@ -305,7 +305,7 @@ android.allow_backup = True
 # android.no-byte-compile-python = False
 
 # (str) The format used to package the app for release mode (aab or apk or aar).
- android.release_artifact = aab
+ #android.release_artifact = aab
 
 # (str) The format used to package the app for debug mode (apk or aar).
 # android.debug_artifact = apk
