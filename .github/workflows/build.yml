@@ -9,31 +9,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    container:
+      image: kivy/buildozer:latest
+
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Install System Dependencies
-      run: |
-        sudo apt update
-        sudo apt install -y \
-          python3-pip build-essential git zip unzip \
-          openjdk-17-jdk python3-setuptools python3-wheel \
-          libffi-dev libssl-dev
+      - name: Build Debug APK
+        run: buildozer android debug
 
-    - name: Install Python Dependencies
-      run: |
-        pip install --upgrade pip
-        pip install buildozer cython
-
-    - name: Accept Android Licenses
-      run: yes | buildozer android update
-
-    - name: Build Debug APK
-      run: buildozer -v android debug
-
-    - name: Upload APK Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: kivy-apk
-        path: bin/*.apk
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kivy-apk
+          path: bin/*.apk
